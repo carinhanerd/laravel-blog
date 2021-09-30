@@ -19,22 +19,28 @@ function Home({ articles }) {
 
                 <p className="text-gray-600 line-clamp-2">{article.body}</p>
 
+                <span className="block mt-1 text-sm text-gray-500">
+                  {article.created_at}
+                </span>
+
                 <div className="flex items-center gap-4 mt-2">
                   {article.category && (
-                    <div className="inline-block p-1 text-sm font-semibold text-white bg-gray-800 rounded">
+                    <div className="px-2 py-1 font-semibold text-white bg-gray-800 rounded">
                       {article.category.name}
                     </div>
                   )}
 
-                  {article.tags &&
-                    article.tags.map((tag) => (
-                      <div
-                        key={tag.id}
-                        className="text-sm text-gray-700 bg-blue-300 rounded-lg"
-                      >
-                        {tag.name}
-                      </div>
-                    ))}
+                  <div className="flex items-center gap-1">
+                    {article.tags &&
+                      article.tags.map((tag) => (
+                        <div
+                          key={tag.id}
+                          className="px-2 py-1 text-sm font-semibold text-white bg-blue-400 rounded"
+                        >
+                          {tag.name}
+                        </div>
+                      ))}
+                  </div>
                 </div>
               </article>
             </Link>

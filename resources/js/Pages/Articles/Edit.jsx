@@ -27,6 +27,11 @@ export default function Edit({ auth, article, collection }) {
     label: tag.name
   }));
 
+  const defaultTags = article.tags.map((tag) => ({
+    value: tag.id,
+    label: tag.name
+  }));
+
   const onSubmit = (e) => {
     e.preventDefault();
     put(route("articles.update", article));
@@ -114,6 +119,7 @@ export default function Edit({ auth, article, collection }) {
             inputId="tags"
             options={tagList}
             onChange={onChangeTag}
+            defaultValue={defaultTags}
             isSearchable
             isClearable
             isMulti

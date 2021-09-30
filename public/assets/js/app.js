@@ -4041,10 +4041,6 @@ function Create(_ref) {
     setData(e.target.id, e.target.value);
   };
 
-  var onChangeFile = function onChangeFile(e) {
-    setData(e.target.id, e.target.files[0]);
-  };
-
   var onChangeCategory = function onChangeCategory(e) {
     setData("category_id", e === null || e === void 0 ? void 0 : e.value);
   };
@@ -4202,6 +4198,12 @@ function Edit(_ref) {
       label: tag.name
     };
   });
+  var defaultTags = article.tags.map(function (tag) {
+    return {
+      value: tag.id,
+      label: tag.name
+    };
+  });
 
   var onSubmit = function onSubmit(e) {
     e.preventDefault();
@@ -4289,6 +4291,7 @@ function Edit(_ref) {
           inputId: "tags",
           options: tagList,
           onChange: onChangeTag,
+          defaultValue: defaultTags,
           isSearchable: true,
           isClearable: true,
           isMulti: true
@@ -4432,19 +4435,30 @@ function Show(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__.default, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("article", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-        className: "flex flex-col items-end w-2/3 px-6 mx-auto mb-8",
+        className: "flex flex-col items-end w-2/3 px-6 mx-auto",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
           className: "text-5xl font-semibold leading-tight text-right",
           children: article.title
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h2", {
           className: "leading-normal text-gray-500",
           children: ["Published on ", article.created_at]
-        }), article.category && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "px-3 py-2 mt-4 font-semibold text-white bg-gray-800 rounded",
-          children: article.category.name
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "flex items-center gap-4 mt-4",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "flex items-center gap-2",
+            children: article.tags && article.tags.map(function (tag) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                className: "px-3 py-2 text-sm font-semibold text-white bg-blue-400 rounded",
+                children: tag.name
+              }, tag.id);
+            })
+          }), article.category && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: "px-3 py-2 font-semibold text-white bg-gray-800 rounded",
+            children: article.category.name
+          })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        "class": "w-2/3 mx-auto",
+        className: "w-2/3 mx-auto my-8",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("pre", {
           className: "whitespace-pre-wrap",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
@@ -4847,16 +4861,22 @@ function Home(_ref) {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
               className: "text-gray-600 line-clamp-2",
               children: article.body
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
+              className: "block mt-1 text-sm text-gray-500",
+              children: article.created_at
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "flex items-center gap-4 mt-2",
               children: [article.category && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                className: "inline-block p-1 text-sm font-semibold text-white bg-gray-800 rounded",
+                className: "px-2 py-1 font-semibold text-white bg-gray-800 rounded",
                 children: article.category.name
-              }), article.tags && article.tags.map(function (tag) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "text-sm text-gray-700 bg-blue-300 rounded-lg",
-                  children: tag.name
-                }, tag.id);
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: "flex items-center gap-1",
+                children: article.tags && article.tags.map(function (tag) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                    className: "px-2 py-1 text-sm font-semibold text-white bg-blue-400 rounded",
+                    children: tag.name
+                  }, tag.id);
+                })
               })]
             })]
           })

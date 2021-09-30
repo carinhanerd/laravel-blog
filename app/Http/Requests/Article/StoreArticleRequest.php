@@ -15,8 +15,8 @@ class StoreArticleRequest extends FormRequest
     {
         return [
             'user_id' => ['required'],
-            'title' => ['required', 'string', 'unique:categories'],
-            'body' => ['required', 'string'],
+            'title' => ['required', 'string', 'min:3', 'unique:articles'],
+            'body' => ['required', 'string', 'min:10'],
             'category_id' => ['nullable']
         ];
     }

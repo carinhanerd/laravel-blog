@@ -18,7 +18,8 @@ class CreateArticlesTable extends Migration
             $table->string('title')->unique();
             $table->longText('body');
 
-            $table->foreignId('category_id')->nullable()
+            $table->foreignId('category_id')
+                ->nullable()
                 ->constrained()
                 ->nullOnDelete();
 

@@ -24,8 +24,15 @@ final class ArticleRepository
 
     public function handleStore(FormRequest $request): Article
     {
-        /** @var Article */
         $article = Article::create($request->validated());
+
+        if (!empty($request->post('tags'))) {
+            $values = array_map(function ($tag) {
+                return $tag['value'];
+            }, $request->post('tags'));
+
+            $article->tags()->attach($values);
+        }
 
         return $article;
     }
@@ -33,6 +40,14 @@ final class ArticleRepository
     public function handleUpdate(FormRequest $request, Article $article)
     {
         $validated = $request->validated();
+
+        if (!empty($request->post('tags'))) {
+            $values = array_map(function ($tag) {
+                return $tag['value'];
+            }, $request->post('tags'));
+
+            $article->tags()->sync($values);
+        }
 
         return $article->update($validated);
     }

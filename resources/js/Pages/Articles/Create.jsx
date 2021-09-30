@@ -32,10 +32,6 @@ export default function Create({ auth, collection }) {
     setData(e.target.id, e.target.value);
   };
 
-  const onChangeFile = (e) => {
-    setData(e.target.id, e.target.files[0]);
-  };
-
   const onChangeCategory = (e) => {
     setData("category_id", e?.value);
   };

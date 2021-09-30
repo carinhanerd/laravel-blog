@@ -48,6 +48,8 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
+        $article->load('tags');
+
         $collection = $this->repository->categoriesTags();
 
         return inertia('Articles/Edit', compact('article', 'collection'));
