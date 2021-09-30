@@ -13,8 +13,7 @@ class WebController extends Controller
             ->latest()
             ->get();
 
-        return inertia('Home', compact('articles'))
-            ->withViewData('foo', 'bar');
+        return inertia('Home', compact('articles'));
     }
 
     public function about()

@@ -17,7 +17,6 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->longText('body');
-            $table->string('image_url')->nullable();
 
             $table->foreignId('category_id')->nullable()
                 ->constrained()

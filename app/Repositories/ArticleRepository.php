@@ -27,21 +27,12 @@ final class ArticleRepository
         /** @var Article */
         $article = Article::create($request->validated());
 
-        if ($request->hasFile('image_url')) {
-            $article->addMediaFromRequest('image_url')
-                ->toMediaCollection('articles');
-        }
-
         return $article;
     }
 
     public function handleUpdate(FormRequest $request, Article $article)
     {
         $validated = $request->validated();
-
-        if ($request->hasFile('image_url')) {
-            $article->updateMedia($request->file('image_url'), 'articles');
-        }
 
         return $article->update($validated);
     }

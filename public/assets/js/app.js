@@ -3664,50 +3664,6 @@ function SadEmoji() {
 
 /***/ }),
 
-/***/ "./resources/js/Components/GoBack.jsx":
-/*!********************************************!*\
-  !*** ./resources/js/Components/GoBack.jsx ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-function GoBack(_ref) {
-  var to = _ref.to;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_0__.Link, {
-    href: to,
-    className: "flex items-center text-sm font-semibold",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("svg", {
-      xmlns: "http://www.w3.org/2000/svg",
-      "class": "h-6 w-6 mr-1",
-      fill: "none",
-      viewBox: "0 0 24 24",
-      stroke: "currentColor",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("path", {
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round",
-        "stroke-width": "2",
-        d: "M11 17l-5-5m0 0l5-5m-5 5h12"
-      })
-    }), "Go back"]
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GoBack);
-
-/***/ }),
-
 /***/ "./resources/js/Components/SubmitButton.jsx":
 /*!**************************************************!*\
   !*** ./resources/js/Components/SubmitButton.jsx ***!
@@ -4053,7 +4009,6 @@ function Create(_ref) {
   var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
     title: "",
     body: "",
-    image_url: "",
     category_id: "",
     tags: []
   }),
@@ -4144,20 +4099,6 @@ function Create(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "mb-4",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          htmlFor: "image_url",
-          className: "block mb-2",
-          children: "Image (PNG or JPEG)"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-          type: "file",
-          id: "image_url",
-          onChange: onChangeFile,
-          className: "w-full"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_ValidationMessage__WEBPACK_IMPORTED_MODULE_3__.default, {
-          errors: errors.image_url
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "mb-4",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
           htmlFor: "category_id",
           className: "block mb-2",
           children: "Category"
@@ -4229,8 +4170,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 function Edit(_ref) {
-  var _article$image;
-
   var auth = _ref.auth,
       article = _ref.article,
       collection = _ref.collection;
@@ -4239,7 +4178,6 @@ function Edit(_ref) {
     title: article.title,
     body: article.body,
     category_id: article.category_id,
-    image_url: "",
     tags: []
   }),
       data = _useForm.data,
@@ -4272,10 +4210,6 @@ function Edit(_ref) {
 
   var onChange = function onChange(e) {
     setData(e.target.id, e.target.value);
-  };
-
-  var onChangeFile = function onChangeFile(e) {
-    setData(e.target.id, e.target.files[0]);
   };
 
   var onChangeCategory = function onChangeCategory(e) {
@@ -4328,24 +4262,6 @@ function Edit(_ref) {
           required: true
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_ValidationMessage__WEBPACK_IMPORTED_MODULE_3__.default, {
           errors: errors.body
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "mb-4",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("label", {
-          htmlFor: "image_url",
-          className: "block mb-2",
-          children: "Image (PNG or JPEG)"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-          src: (_article$image = article.image) !== null && _article$image !== void 0 ? _article$image : "/assets/img/default-article-pic.png",
-          className: "w-16 h-16 mb-2 overflow-hidden border border-black rounded-full",
-          alt: "article image"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-          type: "file",
-          id: "image_url",
-          onChange: onChangeFile,
-          className: "w-full"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Components_ValidationMessage__WEBPACK_IMPORTED_MODULE_3__.default, {
-          errors: errors.image_url
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
         className: "mb-4",
@@ -4506,50 +4422,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/AppLayout */ "./resources/js/Layouts/AppLayout.jsx");
-/* harmony import */ var _Components_GoBack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/Components/GoBack */ "./resources/js/Components/GoBack.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 
 
 function Show(_ref) {
-  var _article$image;
-
   var article = _ref.article;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__.default, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Components_GoBack__WEBPACK_IMPORTED_MODULE_2__.default, {
-      to: route("home")
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("article", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "flex flex-col items-end px-6 mb-8",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "flex items-center",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-            className: "text-5xl font-semibold leading-tight text-right",
-            children: article.title
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "w-24 ml-6 overflow-hidden border-2 border-black rounded-full",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-              src: (_article$image = article.image) !== null && _article$image !== void 0 ? _article$image : "/assets/img/default-article-pic.png",
-              alt: "article image"
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("h2", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_1__.default, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("article", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "flex flex-col items-end w-2/3 px-6 mx-auto mb-8",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+          className: "text-5xl font-semibold leading-tight text-right",
+          children: article.title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h2", {
           className: "leading-normal text-gray-500",
           children: ["Published on ", article.created_at]
-        }), article.category && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        }), article.category && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "px-3 py-2 mt-4 font-semibold text-white bg-gray-800 rounded",
           children: article.category.name
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("pre", {
-        className: "whitespace-pre-wrap",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          className: "text-lg",
-          children: article.body
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        "class": "w-2/3 mx-auto",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("pre", {
+          className: "whitespace-pre-wrap",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "text-lg",
+            children: article.body
+          })
         })
       })]
-    })]
+    })
   });
 }
 
@@ -4930,37 +4834,29 @@ function Home(_ref) {
   var articles = _ref.articles;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Layouts_AppLayout__WEBPACK_IMPORTED_MODULE_2__.default, {
     children: articles.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "flex flex-col gap-4 mb-4",
+      className: "flex flex-col w-2/3 gap-4 mx-auto mb-4",
       children: articles.map(function (article) {
-        var _article$image;
-
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_1__.Link, {
           href: route("articles.show", article),
           className: "outline-none group",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("article", {
-            className: "flex gap-4 p-4 bg-white hover:bg-gray-200 group-focus:bg-gray-200",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-              src: (_article$image = article.image) !== null && _article$image !== void 0 ? _article$image : "/assets/img/default-article-pic.png",
-              alt: "article image",
-              className: "w-32 h-32"
+            className: "p-4 bg-white hover:bg-gray-200 group-focus:bg-gray-200",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
+              className: "text-2xl line-clamp-1",
+              children: article.title
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+              className: "text-gray-600 line-clamp-2",
+              children: article.body
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-                className: "text-xl line-clamp-1",
-                children: article.title
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-                className: "text-gray-600 line-clamp-2",
-                children: article.body
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "flex items-center gap-4 mt-2",
-                children: [article.category && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                  className: "inline-block p-1 text-sm font-semibold text-white bg-gray-800 rounded",
-                  children: article.category.name
-                }), article.tags && article.tags.map(function (tag) {
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                    className: "text-sm text-gray-700 bg-blue-300 rounded-lg",
-                    children: tag.name
-                  }, tag.id);
-                })]
+              className: "flex items-center gap-4 mt-2",
+              children: [article.category && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                className: "inline-block p-1 text-sm font-semibold text-white bg-gray-800 rounded",
+                children: article.category.name
+              }), article.tags && article.tags.map(function (tag) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+                  className: "text-sm text-gray-700 bg-blue-300 rounded-lg",
+                  children: tag.name
+                }, tag.id);
               })]
             })]
           })

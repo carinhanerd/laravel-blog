@@ -9,7 +9,6 @@ export default function Create({ auth, collection }) {
   const { data, setData, post, processing, errors, transform } = useForm({
     title: "",
     body: "",
-    image_url: "",
     category_id: "",
     tags: []
   });
@@ -84,21 +83,6 @@ export default function Create({ auth, collection }) {
           />
 
           <ValidationMessage errors={errors.body} />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="image_url" className="block mb-2">
-            Image (PNG or JPEG)
-          </label>
-
-          <input
-            type="file"
-            id="image_url"
-            onChange={onChangeFile}
-            className="w-full"
-          />
-
-          <ValidationMessage errors={errors.image_url} />
         </div>
 
         <div className="mb-4">

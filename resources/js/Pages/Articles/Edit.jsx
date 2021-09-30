@@ -10,7 +10,6 @@ export default function Edit({ auth, article, collection }) {
     title: article.title,
     body: article.body,
     category_id: article.category_id,
-    image_url: "",
     tags: []
   });
 
@@ -35,10 +34,6 @@ export default function Edit({ auth, article, collection }) {
 
   const onChange = (e) => {
     setData(e.target.id, e.target.value);
-  };
-
-  const onChangeFile = (e) => {
-    setData(e.target.id, e.target.files[0]);
   };
 
   const onChangeCategory = (e) => {
@@ -91,27 +86,6 @@ export default function Edit({ auth, article, collection }) {
           />
 
           <ValidationMessage errors={errors.body} />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="image_url" className="block mb-2">
-            Image (PNG or JPEG)
-          </label>
-
-          <img
-            src={article.image ?? "/assets/img/default-article-pic.png"}
-            className="w-16 h-16 mb-2 overflow-hidden border border-black rounded-full"
-            alt="article image"
-          />
-
-          <input
-            type="file"
-            id="image_url"
-            onChange={onChangeFile}
-            className="w-full"
-          />
-
-          <ValidationMessage errors={errors.image_url} />
         </div>
 
         <div className="mb-4">

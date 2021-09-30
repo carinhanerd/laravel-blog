@@ -43,20 +43,12 @@ class ArticleController extends Controller
     {
         $article->load(['category', 'tags']);
 
-        if ($article->hasMedia('articles')) {
-            $article['image'] = $article->getFirstMediaUrl('articles');
-        }
-
         return inertia('Articles/Show', compact('article'));
     }
 
     public function edit(Article $article)
     {
         $collection = $this->repository->categoriesTags();
-
-        if ($article->hasMedia('articles')) {
-            $article['image'] = $article->getFirstMediaUrl('articles');
-        }
 
         return inertia('Articles/Edit', compact('article', 'collection'));
     }
