@@ -17,7 +17,7 @@ class UpdateCategoryRequest extends FormRequest
         return [
             'name' => [
                 'required', 'string',
-                Rule::unique('categories')->ignore($this->id)
+                Rule::unique('categories')->ignore($this->category->id)
             ]
         ];
     }

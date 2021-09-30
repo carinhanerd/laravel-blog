@@ -4335,7 +4335,7 @@ __webpack_require__.r(__webpack_exports__);
 function Index(_ref) {
   var articles = _ref.articles;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_Layouts_AdminLayout__WEBPACK_IMPORTED_MODULE_1__.default, {
-    header: "List Articles",
+    header: "List of Articles",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "flex items-center",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {
@@ -4358,8 +4358,8 @@ function Index(_ref) {
             children: "title"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
             scope: "col",
-            className: "p-2 text-left",
-            children: "created_at"
+            className: "p-2 text-left whitespace-nowrap",
+            children: "created by"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
             scope: "col",
             className: "p-2 text-left",
@@ -4375,10 +4375,13 @@ function Index(_ref) {
               children: idx + 1
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
               className: "px-2 py-4 text-gray-600",
-              children: article.title
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "line-clamp-1",
+                children: article.title
+              })
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-              className: "px-2 py-4 text-gray-600",
-              children: article.created_at
+              className: "px-2 py-4 text-gray-600 whitespace-nowrap",
+              children: article.user.name
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("td", {
               className: "flex items-center gap-1 px-2 py-4",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.Link, {

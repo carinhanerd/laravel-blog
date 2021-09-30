@@ -16,7 +16,10 @@ class UpdateArticleRequest extends FormRequest
     {
         return [
             'user_id' => ['required'],
-            'title' => ['required', 'string', 'min:3', Rule::unique('articles')->ignore($this->id)],
+            'title' => [
+                'required', 'string', 'min:3',
+                Rule::unique('articles')->ignore($this->article->id)
+            ],
             'body' => ['required', 'string', 'min:10'],
             'category_id' => ['nullable']
         ];

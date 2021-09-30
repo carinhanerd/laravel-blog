@@ -19,6 +19,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::query()
+            ->with('user')
             ->latest()
             ->get();
 

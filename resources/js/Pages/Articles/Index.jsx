@@ -6,7 +6,7 @@ import PlusEmoji from "@/Components/Emojis/PlusEmoji";
 
 export default function Index({ articles }) {
   return (
-    <AdminLayout header="List Articles">
+    <AdminLayout header="List of Articles">
       <div className="flex items-center">
         <Link
           href={route("articles.create")}
@@ -27,8 +27,8 @@ export default function Index({ articles }) {
               <th scope="col" className="p-2 text-left">
                 title
               </th>
-              <th scope="col" className="p-2 text-left">
-                created_at
+              <th scope="col" className="p-2 text-left whitespace-nowrap">
+                created by
               </th>
               <th scope="col" className="p-2 text-left">
                 actions
@@ -39,9 +39,11 @@ export default function Index({ articles }) {
             {articles.map((article, idx) => (
               <tr key={idx}>
                 <td className="px-2 py-4 text-gray-600">{idx + 1}</td>
-                <td className="px-2 py-4 text-gray-600">{article.title}</td>
                 <td className="px-2 py-4 text-gray-600">
-                  {article.created_at}
+                  <div className="line-clamp-1">{article.title}</div>
+                </td>
+                <td className="px-2 py-4 text-gray-600 whitespace-nowrap">
+                  {article.user.name}
                 </td>
                 <td className="flex items-center gap-1 px-2 py-4">
                   <Link
