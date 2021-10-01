@@ -6,20 +6,13 @@ import ValidationMessage from "@/Components/ValidationMessage";
 import SubmitButton from "@/Components/SubmitButton";
 
 export default function Edit({ auth, article, collection }) {
-  const { data, setData, put, processing, errors, transform } = useForm({
-    title: article.title,
-    body: article.body,
-    category_id: article.category_id,
-    tags: []
-  });
-
   const categoryList = collection.categories.map((category) => ({
     value: category.id,
     label: category.name
   }));
 
   const defaultCategory = categoryList.find((category) => {
-    return category.value == data.category_id;
+    return category.value == article.category_id;
   });
 
   const tagList = collection.tags.map((tag) => ({
@@ -32,6 +25,13 @@ export default function Edit({ auth, article, collection }) {
     label: tag.name
   }));
 
+  const { data, setData, put, processing, errors, transform } = useForm({
+    title: article.title,
+    body: article.body,
+    category_id: article.category_id,
+    tags: defaultTags
+  });
+
   const onSubmit = (e) => {
     e.preventDefault();
     put(route("articles.update", article));
@@ -42,7 +42,7 @@ export default function Edit({ auth, article, collection }) {
   };
 
   const onChangeCategory = (e) => {
-    setData("category_id", e?.value);
+    setData("category_id", e?.value ?? null);
   };
 
   const onChangeTag = (e) => {

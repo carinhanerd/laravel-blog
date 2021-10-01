@@ -4169,20 +4169,6 @@ function Edit(_ref) {
   var auth = _ref.auth,
       article = _ref.article,
       collection = _ref.collection;
-
-  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
-    title: article.title,
-    body: article.body,
-    category_id: article.category_id,
-    tags: []
-  }),
-      data = _useForm.data,
-      setData = _useForm.setData,
-      put = _useForm.put,
-      processing = _useForm.processing,
-      errors = _useForm.errors,
-      transform = _useForm.transform;
-
   var categoryList = collection.categories.map(function (category) {
     return {
       value: category.id,
@@ -4190,7 +4176,7 @@ function Edit(_ref) {
     };
   });
   var defaultCategory = categoryList.find(function (category) {
-    return category.value == data.category_id;
+    return category.value == article.category_id;
   });
   var tagList = collection.tags.map(function (tag) {
     return {
@@ -4205,6 +4191,19 @@ function Edit(_ref) {
     };
   });
 
+  var _useForm = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_2__.useForm)({
+    title: article.title,
+    body: article.body,
+    category_id: article.category_id,
+    tags: defaultTags
+  }),
+      data = _useForm.data,
+      setData = _useForm.setData,
+      put = _useForm.put,
+      processing = _useForm.processing,
+      errors = _useForm.errors,
+      transform = _useForm.transform;
+
   var onSubmit = function onSubmit(e) {
     e.preventDefault();
     put(route("articles.update", article));
@@ -4215,7 +4214,9 @@ function Edit(_ref) {
   };
 
   var onChangeCategory = function onChangeCategory(e) {
-    setData("category_id", e === null || e === void 0 ? void 0 : e.value);
+    var _e$value;
+
+    setData("category_id", (_e$value = e === null || e === void 0 ? void 0 : e.value) !== null && _e$value !== void 0 ? _e$value : null);
   };
 
   var onChangeTag = function onChangeTag(e) {
