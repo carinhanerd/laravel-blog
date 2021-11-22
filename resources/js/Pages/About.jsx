@@ -1,5 +1,6 @@
 import React from "react";
 import AppLayout from "@/Layouts/AppLayout";
+import Avatar from '@/../img/about-me-avatar.jpg'
 
 function About() {
   return (
@@ -30,7 +31,7 @@ function About() {
           </p>
         </div>
 
-        <img src="/assets/img/about-me-avatar.jpg" alt="Author Picture" />
+        <img src={Avatar} alt="Author Picture" />
       </div>
     </AppLayout>
   );

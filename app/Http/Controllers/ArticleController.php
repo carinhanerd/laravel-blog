@@ -58,8 +58,6 @@ class ArticleController extends Controller
 
     public function update(Article $article, UpdateArticleRequest $request)
     {
-        $this->authorize('update', $article);
-
         $this->repository->handleUpdate($request, $article);
 
         return redirect()->route('articles.index');

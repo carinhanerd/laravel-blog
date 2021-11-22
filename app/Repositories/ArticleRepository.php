@@ -26,11 +26,13 @@ final class ArticleRepository
     {
         $article = Article::create($request->validated());
 
-        $tags = array_map(function ($tag) {
-            return $tag['value'];
-        }, $request->tags);
+        if ($request->has('tags')) {
+            $tags = array_map(function ($tag) {
+                return $tag['value'];
+            }, $request->tags);
 
-        $article->tags()->attach($tags);
+            $article->tags()->attach($tags);
+        }
 
         return $article;
     }
@@ -39,11 +41,13 @@ final class ArticleRepository
     {
         $validated = $request->validated();
 
-        $tags = array_map(function ($tag) {
-            return $tag['value'];
-        }, $request->tags);
+        if ($request->has('tags')) {
+            $tags = array_map(function ($tag) {
+                return $tag['value'];
+            }, $request->tags);
 
-        $article->tags()->sync($tags);
+            $article->tags()->sync($tags);
+        }
 
         return $article->update($validated);
     }
